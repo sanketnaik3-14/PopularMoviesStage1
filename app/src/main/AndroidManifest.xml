@@ -11,14 +11,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity
+            android:name=".activities.MainActivity"
+            android:launchMode="singleTop">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".DetailsActivity"></activity>
+        <activity
+            android:name=".activities.DetailsActivity"
+            android:parentActivityName=".activities.MainActivity"
+            android:launchMode="singleTop">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".activities.MainActivity" />
+        </activity>
+
+        <provider
+            android:name=".data.MovieProvider"
+            android:authorities="com.example.android.popularmoviesstage1"
+            android:exported="false" />
+
+        <activity
+            android:name=".activities.ReviewsActivity"
+            android:parentActivityName=".activities.DetailsActivity">
+            <meta-data
+                android:name="android.support."
+                android:value=".activities.DetailsActivity"/>
+        </activity>
     </application>
 
 </manifest>

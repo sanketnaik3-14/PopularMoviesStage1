@@ -2,4 +2,13 @@
     <string name="app_name">Popular Movies Stage 1</string>
     <string name="popular_movies">Popular Movies</string>
     <string name="top_rated_movies">Top Rated Movies</string>
+
+    <string name="title_name">Title - </string>
+    <string name="release_name">Release - </string>
+    <string name="rating_name">Rating - </string>
+    <string name="overview_name">Overview</string>
+    <string name="favourites">Favourites</string>
+    <string name="reviews">Reviews</string>
+    <string name="trailers">Trailers</string>
+
 </resources>

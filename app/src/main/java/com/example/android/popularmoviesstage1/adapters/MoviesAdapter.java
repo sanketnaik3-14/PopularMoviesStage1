@@ -1,4 +1,4 @@
-package com.example.android.popularmoviesstage1;
+package com.example.android.popularmoviesstage1.adapters;
 
 import android.content.Context;
 import android.net.Uri;
@@ -10,13 +10,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.example.android.popularmoviesstage1.pojo.Movies;
+import com.example.android.popularmoviesstage1.R;
 
 import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewHolder> {
 
     private List<Movies> mMovieList;
-    Context mContext;
+    private Context mContext;
     private final MoviesAdapterOnClickHandler mClickHandler;
 
     public MoviesAdapter(Context context, MoviesAdapterOnClickHandler clickHandler)
@@ -27,7 +29,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
 
     public interface MoviesAdapterOnClickHandler
     {
-        void onClick(String title,String plot, Double rating, String release, String poster);
+        void onClick(Movies movies);
     }
 
     class MovieViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener
@@ -46,14 +48,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
 
             int adapterPosition = getAdapterPosition();
             Movies movie = mMovieList.get(adapterPosition);
-
-            String mTitle = movie.getmTitle();
-            String mOverview = movie.getmOverview();
-            Double rating = movie.getmRating();
-            String release = movie.getmReleaseDate();
-            String moviePoster = movie.getmPosterId();
-
-            mClickHandler.onClick(mTitle, mOverview, rating, release, moviePoster);
+            mClickHandler.onClick(movie);
         }
     }
 
@@ -75,6 +70,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
 
         Movies movie = mMovieList.get(position);
         String imageName = movie.getmPosterId();
+
         imageName = imageName.replace("/", "");
 
         Uri.Builder builder = new Uri.Builder();
@@ -82,13 +78,12 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MovieViewH
                 .authority("image.tmdb.org")
                 .appendPath("t")
                 .appendPath("p")
-                .appendPath("w185")
+                .appendPath("w780")
                 .appendPath(imageName);
 
         String url = builder.build().toString();
 
         Glide.with(mContext).load(url).into(holder.moviePosterImage);
-
     }
 
     @Override

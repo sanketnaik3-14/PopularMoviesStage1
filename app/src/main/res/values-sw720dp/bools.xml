@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="isTwoPane">false</bool>
+
+    <bool name="isHandsetPortrait">false</bool>
+    <bool name="isHandsetLand">false</bool>
+    <bool name="is600TabletPortrait">false</bool>
+    <bool name="is600TabletLand">false</bool>
+    <bool name="is720TabletPortrait">true</bool>
+    <bool name="is720TabletLand">false</bool>
+</resources>

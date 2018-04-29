@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary">
+
+    <ImageView
+        android:id="@+id/imageViewTrailer"
+        android:layout_width="320dp"
+        android:layout_height="180dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/textViewTrailerDescription"
+        android:layout_width="0dp"
+        android:layout_height="42dp"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageViewTrailer"
+        app:layout_constraintStart_toStartOf="@+id/imageViewTrailer"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewTrailer"
+        tools:text="Zootopia is about xyz abc , ss jdncjb xfvb cv cjkv cjv fd d cvccvn nbcnvvbvbvbvbvbvbvbvbvbv  vbcdf b" />
+</android.support.constraint.ConstraintLayout>

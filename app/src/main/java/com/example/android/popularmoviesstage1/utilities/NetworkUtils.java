@@ -77,9 +77,60 @@ public class NetworkUtils {
         return url;
     }
 
+    public static URL buildReviewsUrl(int id)
+    {
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("https")
+                .authority("api.themoviedb.org")
+                .appendPath("3")
+                .appendPath("movie")
+                .appendPath(String.valueOf(id))
+                .appendPath("reviews")
+                .appendQueryParameter(KEY_PARAM, apiKey)
+                .appendQueryParameter(LANGUAGE_PARAM, language);
+
+        URL url = null;
+        try
+        {
+            url = new URL(builder.build().toString());
+        }
+        catch(MalformedURLException mfe)
+        {
+            mfe.printStackTrace();
+        }
+        return url;
+    }
+
+    public static URL buildTrailersUrl(int id)
+    {
+        Uri.Builder builder = new Uri.Builder();
+        builder.scheme("https")
+                .authority("api.themoviedb.org")
+                .appendPath("3")
+                .appendPath("movie")
+                .appendPath(String.valueOf(id))
+                .appendPath("videos")
+                .appendQueryParameter(KEY_PARAM, apiKey)
+                .appendQueryParameter(LANGUAGE_PARAM, language);
+
+        URL url = null;
+        try
+        {
+            url = new URL(builder.build().toString());
+        }
+        catch(MalformedURLException mfe)
+        {
+            mfe.printStackTrace();
+        }
+        return url;
+    }
+
     public static String getResponseFromHttpUrl(URL url) throws IOException
     {
         HttpsURLConnection urlConnection = (HttpsURLConnection) url.openConnection();
+        urlConnection.setUseCaches(true);
+        int maxStale = 60 * 60 * 24 * 28;
+        urlConnection.addRequestProperty("Cache-Control", "max-stale=" + maxStale);
         try
         {
             InputStream in = urlConnection.getInputStream();
